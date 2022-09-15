@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::middleware('auth')
+    ->group(function(){
+      Route::get('members/index', [MemberController::class, 'index'])->name('members.index');
+      Route::get('members/create', [MemberController::class, 'create'])->name('members.create');
+      Route::post('members/', [MemberController::class, 'store'])->name('members.store');
+      Route::get('members/{member}', [MemberController::class, 'edit'])->name('members.edit');
+      Route::put('update/{member}', [MemberController::class, 'update'])->name('members.update');
+      });
