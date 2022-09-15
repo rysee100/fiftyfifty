@@ -17,29 +17,25 @@
                             </div>
                           @endif
                           
-       
+          @if(count($members) < 2)
            <div class="flex justify end">
             <button onclick="location.href='{{ route('members.create')}}'" class="flex mt-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">新規登録</button>
           </div>
+          @endif
                           
     <div class="w-full mx-auto overflow-auto">
       <table class="table-auto w-full text-left whitespace-no-wrap">
         <thead>
           <tr>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">名前</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-orange-100">名前</th>
           </tr>
         </thead>
         <tbody>
             @foreach($members as $member)
               <form method="get" action="{{ route('members.edit', ['member' => $member->id ]) }}">
           <tr>
-            <td class="px-4 py-3">{{ $member->name }}</td>
             <td class="px-4 py-3">
-                <x-jet-button class="ml-4">
-                    編集する
-                </x-jet-button>
+                <button class="ml-4 text-blue-500">{{ $member->name }}</button>
             </td>
           </tr>
               </form>

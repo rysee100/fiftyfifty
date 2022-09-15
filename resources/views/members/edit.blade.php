@@ -27,7 +27,7 @@
             
             <div class="md:flex justify-between items-end">
                 <x-jet-button class="ml-4">
-                    編集
+                    変更
                 </x-jet-button>
             </div>
 
