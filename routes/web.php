@@ -18,15 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
 
 Route::middleware('auth')
     ->group(function(){
@@ -34,5 +34,5 @@ Route::middleware('auth')
       Route::get('members/create', [MemberController::class, 'create'])->name('members.create');
       Route::post('members/', [MemberController::class, 'store'])->name('members.store');
       Route::get('members/{member}', [MemberController::class, 'edit'])->name('members.edit');
-      Route::put('update/{member}', [MemberController::class, 'update'])->name('members.update');
+      Route::put('members/{member}', [MemberController::class, 'update'])->name('members.update');
       });
