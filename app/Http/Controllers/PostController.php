@@ -61,7 +61,7 @@ class PostController extends Controller
         ]);
         
         
-        session()->flash('status', '登録okです');
+        session()->flash('status', '登録しました');
         
         return to_route('dashboard');
     }

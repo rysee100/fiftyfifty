@@ -12,7 +12,7 @@
                  
                   <div class="container px-5 py-2 mx-auto">
                           @if (session('status'))
-                            <div class="mb-4 font-medium text-sm text-green-600">
+                            <div class="mb-4 font-medium text-base text-green-600">
                                 {{ session('status') }}
                             </div>
                           @endif
@@ -23,7 +23,7 @@
                こちらからメンバー登録をしてください
              </div>
           </div>
-           <div class="flex justify-center mb-4">
+           <div class="flex justify-center m-4">
              <div>
                <button onclick="location.href='{{ route('members.create')}}'" class="flex mt-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">新規登録</button>
              </div>
@@ -41,7 +41,7 @@
                       <form method="get" action="{{ route('members.edit', ['member' => $member->id ]) }}">
                   <tr>
                     <td class="px-4 py-3">
-                        <button class="ml-4 text-blue-500">{{ $member->member_name }}</button>
+                        <button class="ml-4 text-blue-500 hover:text-blue-400">{{ $member->member_name }}</button>
                     </td>
                   </tr>
                       </form>

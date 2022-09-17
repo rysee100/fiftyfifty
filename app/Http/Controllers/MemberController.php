@@ -59,7 +59,7 @@ class MemberController extends Controller
            'member_name' => $request['second_member_name']
         ]);
         
-        session()->flash('status', '登録okです');
+        session()->flash('status', '登録しました');
         
         return to_route('members.index');
     }

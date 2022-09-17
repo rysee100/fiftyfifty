@@ -11,7 +11,7 @@
                 <x-jet-validation-errors class="mb-4" />
                 
                 @if (session('error'))
-                <div class="mb-4 font-medium text-sm text-green-600">
+                <div class="mb-4 font-medium text-base text-red-600">
                     {{ session('error') }}
                 </div>
                 @endif
@@ -38,7 +38,7 @@
                         <x-jet-input id="price" class="block mt-1 w-full" type="number" name="price" value="{{ $post->price }}" required/>
                  </div>
                  <div class="mt-4">
-                    <x-jet-label for="comment" value="備考" />
+                    <x-jet-label for="comment" value="備考（任意）" />
                     <x-textarea row="3" id="comment" name="comment" class="block mt-1 w-full">{{ $post->comment }}</x-textarea>
                 </div>
                     <div class="mt-4">

@@ -11,7 +11,7 @@
                 <x-jet-validation-errors class="mb-4" />
                 
                 @if (session('error'))
-                <div class="mb-4 font-medium text-sm text-green-600">
+                <div class="mb-4 font-medium text-base text-red-600">
                     {{ session('error') }}
                 </div>
                 @endif
@@ -22,7 +22,7 @@
             @method('put')
 
             <div class="mt-4 mb-4">
-                <x-jet-label for="member_name" value="名前" />
+                <x-jet-label for="member_name" value="変更後の名前" />
                 <x-jet-input id="member_name" class="block mt-1 w-full" type="text" name="member_name" value="{{ $member->member_name }}" required autofocus />
             </div>
             
