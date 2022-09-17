@@ -28,15 +28,21 @@ Route::middleware([
 });
 
 Route::middleware('auth')
+    ->prefix('members')
     ->group(function(){
-      Route::get('members/index', [MemberController::class, 'index'])->name('members.index');
-      Route::get('members/create', [MemberController::class, 'create'])->name('members.create');
-      Route::post('members/', [MemberController::class, 'store'])->name('members.store');
-      Route::get('members/{member}', [MemberController::class, 'edit'])->name('members.edit');
-      Route::put('members/{member}', [MemberController::class, 'update'])->name('members.update');
-      Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
-      Route::post('posts/', [PostController::class, 'store'])->name('posts.store');
-      Route::get('posts/{post}', [PostController::class, 'edit'])->name('posts.edit');
-      Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.update');
-      Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+      Route::get('/index', [MemberController::class, 'index'])->name('members.index');
+      Route::get('/create', [MemberController::class, 'create'])->name('members.create');
+      Route::post('/', [MemberController::class, 'store'])->name('members.store');
+      Route::get('/{member}', [MemberController::class, 'edit'])->name('members.edit');
+      Route::put('/{member}', [MemberController::class, 'update'])->name('members.update');
       });
+
+Route::prefix('posts')
+    ->middleware('auth')
+    ->group(function(){
+      Route::get('/create', [PostController::class, 'create'])->name('posts.create');
+      Route::post('/', [PostController::class, 'store'])->name('posts.store');
+      Route::get('/{post}', [PostController::class, 'edit'])->name('posts.edit');
+      Route::put('/{post}', [PostController::class, 'update'])->name('posts.update');
+      Route::delete('/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+    });

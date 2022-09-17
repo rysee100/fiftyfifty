@@ -10,11 +10,7 @@ use App\Models\Member;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
        $posts = Post::where('user_id', '=', Auth::id())
@@ -89,7 +85,16 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->middleware('auth');
+        
         $post = Post::findOrFail($post->id);
+        
+        $postsUserId = $post->user_id;
+        $userId = (int)$postsUserId;
+        $authId = Auth::id();
+        if($userId !== $authId){
+           abort(404);
+        }
         
         $members = Member::where('user_id', '=', Auth::id())->get();
         

@@ -11,11 +11,7 @@ use Illuminate\Validation\Rule;
 
 class MemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $members = Member::where('user_id', '=', Auth::id())
@@ -87,7 +83,16 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
+        $this->middleware('auth');
+        
         $member = Member::findOrFail($member->id);
+        
+        $memberUserId = $member->user_id;
+        $userId = (int)$memberUserId;
+        $authId = Auth::id();
+        if($userId !== $authId){
+           abort(404);
+        }
         
         
         return view('members.edit', compact('member'));
@@ -108,24 +113,19 @@ class MemberController extends Controller
        
       $allMember = Member::where('user_id', '=', Auth::id())
                  ->get();
-                 
-        // foreach($allMember as $onlyMember)
-        // {
-        //      if($onlyMember->id !== $member->id)
-        //     {
-                
-        //         if($onlyMember->member_name === $member->member_name)
-        //         {
-                    
-        //             session()->flash('error', 'メンバー1とメンバー2の名前が重複しています。');
-        //             return view('members.edit', compact('member'));
-                    
-        //         }
-                
-              
-        //     }
+        
+        foreach($allMember as $onlyMember)
+        {
+            if($onlyMember->id !== $member->id)
+            {
+                if($onlyMember->member_name === $request['member_name'])
+                {
+                    session()->flash('error', 'メンバー1とメンバー2の名前が重複しています。');
+                    return view('members.edit', compact('member'));
+                }
+            }
+        }
   
-        // }
        
        $member->member_name = $request['member_name'];
        $member->save();
