@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Member;
+use App\Models\Post;
 
 class User extends Authenticatable
 {
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function members()
     {
         return $this->hasMany(Member::class);
+    }
+    
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

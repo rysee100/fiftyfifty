@@ -153,6 +153,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'member_name' => 'メンバー名',
+        'member' => '支出者',
+        'post_name' => '支出名',
+        'price' => '支出額',
+        'comment' => '備考',
+        'date' => '支出日'
+        
+        ],
 
 ];

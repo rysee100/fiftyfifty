@@ -10,9 +10,9 @@
             　　<div class="max-w-2xl py-4 mx-auto">
                 <x-jet-validation-errors class="mb-4" />
                 
-                @if (session('status'))
-                <div class="mb-4 font-medium text-sm text-green-600">
-                    {{ session('status') }}
+                @if (session('error'))
+                <div class="mb-4 font-medium text-sm text-red-600">
+                    {{ session('error') }}
                 </div>
                 @endif
 
@@ -20,8 +20,12 @@
             @csrf
 
             <div class="mt-4 mb-4">
-                <x-jet-label for="member_name" value="名前" />
-                <x-jet-input id="member_name" class="block mt-1 w-full" type="text" name="member_name" :value="old('member_name')" required autofocus />
+                <x-jet-label for="first_member_name" value="メンバー1の名前" />
+                <x-jet-input id="first_member_name" class="block mt-1 w-full" type="text" name="first_member_name" :value="old('first_member_name')" required autofocus />
+            </div>
+            <div class="mt-4 mb-4">
+                <x-jet-label for="second_member_name" value="メンバー2の名前" />
+                <x-jet-input id="second_member_name" class="block mt-1 w-full" type="text" name="second_member_name" :value="old('second_member_name')" required autofocus />
             </div>
             
             <div class="md:flex justify-between items-end">

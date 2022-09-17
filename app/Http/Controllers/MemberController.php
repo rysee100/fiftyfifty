@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Member;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class MemberController extends Controller
 {
@@ -18,7 +18,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members= DB::table('members')
+        $members = Member::where('user_id', '=', Auth::id())
                  ->get();
         
         return view('members.index', compact('members'));
@@ -31,6 +31,7 @@ class MemberController extends Controller
      */
     public function create()
     {
+        
         return view('members.create');
     }
 
@@ -43,11 +44,23 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'member_name' => ['required', 'max:30'],
+        'first_member_name' => ['required', 'max:30'],
+        'second_member_name' => ['required', 'max:30']
     ]);
+    
+    if($request->first_member_name === $request->second_member_name){
+            session()->flash('error', 'メンバー1とメンバー2の名前が重複しています。');
+            return view('members.create');
+        }
         
         Member::create([
-           'name' => $request['member_name']
+            'user_id' => Auth::id(),
+           'member_name' => $request['first_member_name']
+        ]);
+        
+         Member::create([
+            'user_id' => Auth::id(),
+           'member_name' => $request['second_member_name']
         ]);
         
         session()->flash('status', '登録okです');
@@ -76,8 +89,8 @@ class MemberController extends Controller
     {
         $member = Member::findOrFail($member->id);
         
-        return view('members.edit',
-        compact('member'));
+        
+        return view('members.edit', compact('member'));
     }
 
     /**
@@ -93,7 +106,28 @@ class MemberController extends Controller
         'member_name' => ['required', 'max:30'],
        ]);
        
-       $member->name = $request['member_name'];
+      $allMember = Member::where('user_id', '=', Auth::id())
+                 ->get();
+                 
+        // foreach($allMember as $onlyMember)
+        // {
+        //      if($onlyMember->id !== $member->id)
+        //     {
+                
+        //         if($onlyMember->member_name === $member->member_name)
+        //         {
+                    
+        //             session()->flash('error', 'メンバー1とメンバー2の名前が重複しています。');
+        //             return view('members.edit', compact('member'));
+                    
+        //         }
+                
+              
+        //     }
+  
+        // }
+       
+       $member->member_name = $request['member_name'];
        $member->save();
         
         session()->flash('status', '更新しました');

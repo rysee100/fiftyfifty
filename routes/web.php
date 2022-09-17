@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
+});
 
 Route::middleware('auth')
     ->group(function(){
@@ -35,4 +34,9 @@ Route::middleware('auth')
       Route::post('members/', [MemberController::class, 'store'])->name('members.store');
       Route::get('members/{member}', [MemberController::class, 'edit'])->name('members.edit');
       Route::put('members/{member}', [MemberController::class, 'update'])->name('members.update');
+      Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+      Route::post('posts/', [PostController::class, 'store'])->name('posts.store');
+      Route::get('posts/{post}', [PostController::class, 'edit'])->name('posts.edit');
+      Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.update');
+      Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
       });

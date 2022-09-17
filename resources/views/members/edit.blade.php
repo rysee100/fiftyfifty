@@ -10,19 +10,20 @@
             　　<div class="max-w-2xl py-4 mx-auto">
                 <x-jet-validation-errors class="mb-4" />
                 
-                @if (session('status'))
+                @if (session('error'))
                 <div class="mb-4 font-medium text-sm text-green-600">
-                    {{ session('status') }}
+                    {{ session('error') }}
                 </div>
                 @endif
 
-        <form method="POST" action="{{ route('members.update', ['member' => $member->id ] ) }}">
+        <form method="POST" action="{{ route('members.update', ['member' => $member->id ]) }}">
+  
             @csrf
             @method('put')
 
             <div class="mt-4 mb-4">
                 <x-jet-label for="member_name" value="名前" />
-                <x-jet-input id="member_name" class="block mt-1 w-full" type="text" name="member_name" value="{{ $member->name }}" required autofocus />
+                <x-jet-input id="member_name" class="block mt-1 w-full" type="text" name="member_name" value="{{ $member->member_name }}" required autofocus />
             </div>
             
             <div class="md:flex justify-between items-end">

@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('member_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('post_name');
             $table->integer('price');
             $table->text('comment')->nullable();
             $table->datetime('date');

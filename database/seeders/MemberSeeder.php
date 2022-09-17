@@ -16,10 +16,12 @@ class MemberSeeder extends Seeder
     public function run()
     {
         DB::table('members')->insert([[
-            'name' => 'test1'
+            'user_id' => 1,
+            'member_name' => 'メンバー1'
             ], 
             [
-            'name' => 'test2'
+            'user_id' => 1,
+            'member_name' => 'メンバー2'
             ],
             ]);
     
