@@ -8,6 +8,31 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <form method="GET" action="{{ route('dashboard') }}">
+                <div class="m-4">
+                    <select name="month">
+                        @foreach($months as $month)
+                        <option value="{{$month}}">{{$month}}分</option>
+                        @endforeach
+                    </select>
+                    <button class="ml-2 text-white bg-orange-500 border-0 py-2 px-6 hover:bg-orange-400 rounded">
+                    表示する
+                   </button>
+                </div>
+                @if($monthPrice)
+                <div>
+                    {{$selectMonth}}
+                    合計額
+                {{number_format($monthPrice)}}
+                    円<br>
+                       @if($memberMonthTotal < 0)
+                        {{$member->member_name}}は{{number_format(abs($memberMonthTotal))}}円もらう
+                        @else
+                        {{$member->member_name}}は{{number_format(abs($memberMonthTotal))}}円支払う
+                        @endif
+                </div>
+                @endif
+                </form>
                  <div class="mr-4">
                     <button onclick="location.href='{{ route('posts.create')}}'" class="flex mt-4 ml-auto text-white bg-green-600 border-0 py-2 px-6 hover:bg-green-500 rounded">投稿する</button>
      　　　     　  </div>
@@ -48,9 +73,6 @@
                     @endforeach
                   </div>
                 </section>
-                <div class="m-4">
-                  {{ $posts->links() }}
-                </div>
             </div>
         </div>
     </div>

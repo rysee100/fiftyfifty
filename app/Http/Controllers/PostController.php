@@ -7,18 +7,99 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Member;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-       $posts = Post::where('user_id', '=', Auth::id())
-                 ->paginate(10);
+        // dd($request->month);
+        
+        if(!is_null($request->month))
+        {
+           $date = Carbon::createFromFormat('Y年m月', $request->month);
+           
+            $year = $date->format('Y');
+            $month = $date->format('m');
+          
+           $posts = Post::where('user_id', '=', Auth::id())
+                   ->whereYear('date', $year)
+                   ->whereMonth('date', $month)
+                   ->orderBy('date', 'desc')
+                   ->get(); 
+                   
+           $selectMonth = $year . "年" . $month . "月分";
+           
+          $arrayMonthPrices = Post::selectRaw('SUM(price) as month_price')
+                            ->where('user_id', '=', Auth::id())
+                            ->whereYear('date', $year)
+                            ->whereMonth('date', $month)
+                            ->get();
+                
+        foreach($arrayMonthPrices as $arrayMonthPrice)
+        {
+            $monthPrice = (int)$arrayMonthPrice->month_price;
+            
+        }
+        
+        $member = Member::where('user_id', '=', Auth::id())->first();
+        
+        $arrayMemberMonthPrices = Post::selectRaw('SUM(price) as month_price')
+                            ->where('user_id', '=', Auth::id())
+                            ->whereYear('date', $year)
+                            ->whereMonth('date', $month)
+                            ->where('member_id', '=', $member->id)
+                            ->get();
+                            
+        foreach($arrayMemberMonthPrices as $arrayMemberMonthPrice)
+        {
+            $memberMonthPrice = (int)$arrayMemberMonthPrice->month_price;
+            
+        }
+        
+        $memberMonthTotal = ($monthPrice / 2) -  $memberMonthPrice;
+
+            
+        } 
+        
+        else
+        {
+            $posts = Post::where('user_id', '=', Auth::id())
+           ->orderBy('date', 'desc')
+           ->get(); 
+           
+           $monthPrice = null;
+           $selectMonth = null;
+           $member = null;
+           $memberMonthTotal = null;
+        }
+        
+      $allPost = Post::where('user_id', '=', Auth::id())
+                 ->orderBy('date', 'desc')
+                 ->get();
+      
+      $months = [];
+      
+      foreach($allPost as $onlyPost)
+      {
+       $dateList = Carbon::createFromFormat('Y-m-d', $onlyPost->date);
+       
+       $dateListYear = $dateList->format('Y');
+       $dateListMonth = $dateList->format('m');
+       
+       $monthList = $dateListYear . "年" .  $dateListMonth . "月";
+       
+       array_push($months, $monthList);
+          
+      }
+      
+      $months = array_unique($months);
         
        $members = Member::where('user_id', '=', Auth::id())->get();
+       
         
-        return view('dashboard', compact('posts', 'members'));
+        return view('dashboard', compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'member', 'memberMonthTotal'));
     }
 
     /**
