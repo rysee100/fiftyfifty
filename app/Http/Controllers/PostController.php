@@ -43,13 +43,22 @@ class PostController extends Controller
             
         }
         
-        $member = Member::where('user_id', '=', Auth::id())->first();
+        $firstMember = Member::where('user_id', '=', Auth::id())->first();
+        $arraySecondMembers = Member::where('user_id', '=', Auth::id())
+                       ->where('id', '!=', $firstMember->id)->get();
+                       
+        foreach($arraySecondMembers as $arraySecondMember)
+        {
+            $secondMember = $arraySecondMember;
+            
+        }
+        
         
         $arrayMemberMonthPrices = Post::selectRaw('SUM(price) as month_price')
                             ->where('user_id', '=', Auth::id())
                             ->whereYear('date', $year)
                             ->whereMonth('date', $month)
-                            ->where('member_id', '=', $member->id)
+                            ->where('member_id', '=',  $firstMember->id)
                             ->get();
                             
         foreach($arrayMemberMonthPrices as $arrayMemberMonthPrice)
@@ -73,6 +82,8 @@ class PostController extends Controller
            $selectMonth = null;
            $member = null;
            $memberMonthTotal = null;
+           $firstMember = null;
+           $secondMember = null;
         }
         
       $allPost = Post::where('user_id', '=', Auth::id())
@@ -99,7 +110,8 @@ class PostController extends Controller
        $members = Member::where('user_id', '=', Auth::id())->get();
        
         
-        return view('dashboard', compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'member', 'memberMonthTotal'));
+        return view('dashboard', 
+        compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'firstMember', 'secondMember', 'memberMonthTotal'));
     }
 
     /**

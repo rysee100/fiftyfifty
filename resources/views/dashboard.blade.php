@@ -8,35 +8,41 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <form method="GET" action="{{ route('dashboard') }}">
-                <div class="m-4">
+                <section class="text-gray-600 body-font">
+                   <form method="GET" action="{{ route('dashboard') }}">
+                 <div class="m-4">
                     <select name="month">
                         @foreach($months as $month)
                         <option value="{{$month}}">{{$month}}分</option>
                         @endforeach
                     </select>
                     <button class="ml-2 text-white bg-orange-500 border-0 py-2 px-6 hover:bg-orange-400 rounded">
-                    表示する
+                    精算額を確認する
                    </button>
                 </div>
                 @if($monthPrice)
-                <div>
+                 <div class="grid justify-items-center my-8">
+                    <div class="text-2xl font-bold">
                     {{$selectMonth}}
                     合計額
-                {{number_format($monthPrice)}}
-                    円<br>
+                   {{number_format($monthPrice)}}
+                    円
+                     </div>
+                     <div class="text-xl font-bold mt-2">
                        @if($memberMonthTotal < 0)
-                        {{$member->member_name}}は{{number_format(abs($memberMonthTotal))}}円もらう
+                        {{$secondMember->member_name}}さんは{{$firstMember->member_name}}さんに
+                        <span class="text-red-600">{{number_format(abs($memberMonthTotal))}}円</span>
+                        支払ってください。
                         @else
-                        {{$member->member_name}}は{{number_format(abs($memberMonthTotal))}}円支払う
+                        {{$firstMember->member_name}}さんは{{$secondMember->member_name}}さんに{{number_format(abs($memberMonthTotal))}}円支払ってください。
                         @endif
-                </div>
+                      </div>
+                  </div>
                 @endif
                 </form>
-                 <div class="mr-4">
-                    <button onclick="location.href='{{ route('posts.create')}}'" class="flex mt-4 ml-auto text-white bg-green-600 border-0 py-2 px-6 hover:bg-green-500 rounded">投稿する</button>
+                 <div class="md:mt-4 mt-12 mr-4">
+                    <button onclick="location.href='{{ route('posts.create')}}'" class="flex ml-auto text-white bg-green-600 border-0 py-2 px-6 hover:bg-green-500 rounded">投稿する</button>
      　　　     　  </div>
-               <section class="text-gray-600 body-font">
                  
                   <div class="container px-5 py-2 mx-auto">
                           @if (session('status'))
