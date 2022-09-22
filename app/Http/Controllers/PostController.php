@@ -17,7 +17,7 @@ class PostController extends Controller
         
         if(!is_null($request->month))
         {
-           $date = Carbon::rawCreateFromFormat('Y年m月', $request->month);
+           $date = Carbon::createFromFormat('Y年m月', $request->month);
            
             $year = $date->format('Y');
             $month = $date->format('m');
@@ -73,6 +73,8 @@ class PostController extends Controller
         
         else
         {
+            $today = Carbon::today();
+            
             $posts = Post::where('user_id', '=', Auth::id())
            ->orderBy('date', 'desc')
            ->get(); 
@@ -94,7 +96,7 @@ class PostController extends Controller
       
       foreach($allPost as $onlyPost)
       {
-       $dateList = Carbon::rawCreateFromFormat('Y-m-d', $onlyPost->date);
+       $dateList = Carbon::createFromFormat('Y-m-d', $onlyPost->date);
        
        $dateListYear = $dateList->format('Y');
        $dateListMonth = $dateList->format('m');
@@ -117,7 +119,7 @@ class PostController extends Controller
        
         
         return view('dashboard', 
-        compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'firstMember', 'secondMember', 'memberMonthTotal'));
+        compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'firstMember', 'secondMember', 'memberMonthTotal', 'today'));
     }
 
     /**
