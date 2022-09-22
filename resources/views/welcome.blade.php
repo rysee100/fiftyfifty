@@ -35,7 +35,7 @@
         <div class="py-6 px-8 text-right">
            @if (Route::has('login'))
                @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ホーム</a>
+                <a href="{{ url('/dashboard') }}" class="text-sm text-green-600 hover:underline">ホーム画面へ</a>
             @else
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-sm text-white bg-orange-600 border-0 py-2 px-4 hover:bg-orange-500 rounded">利用登録</a>
