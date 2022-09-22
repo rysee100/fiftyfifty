@@ -17,10 +17,10 @@ class PostController extends Controller
         
         if(!is_null($request->month))
         {
-           $date = Carbon::createFromFormat('Y年m月', $request->month);
+           $date = Carbon::createFromFormat('Y年n月', $request->month);
            
             $year = $date->format('Y');
-            $month = $date->format('m');
+            $month = $date->format('n');
           
            $posts = Post::where('user_id', '=', Auth::id())
                    ->whereYear('date', $year)
@@ -94,10 +94,10 @@ class PostController extends Controller
       
       foreach($allPost as $onlyPost)
       {
-       $dateList = Carbon::createFromFormat('Y-m-d', $onlyPost->date);
+       $dateList = Carbon::createFromFormat('Y-n-j', $onlyPost->date);
        
        $dateListYear = $dateList->format('Y');
-       $dateListMonth = $dateList->format('m');
+       $dateListMonth = $dateList->format('n');
        
        $monthList = $dateListYear . "年" .  $dateListMonth . "月";
        
