@@ -73,8 +73,6 @@ class PostController extends Controller
         
         else
         {
-            $today = Carbon::today();
-            
             $posts = Post::where('user_id', '=', Auth::id())
            ->orderBy('date', 'desc')
            ->get(); 
@@ -119,7 +117,7 @@ class PostController extends Controller
        
         
         return view('dashboard', 
-        compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'firstMember', 'secondMember', 'memberMonthTotal', 'today'));
+        compact('posts', 'months', 'members', 'monthPrice', 'selectMonth', 'firstMember', 'secondMember', 'memberMonthTotal'));
     }
 
     /**

@@ -25,7 +25,7 @@
           </div>
            <div class="flex justify-center m-4">
              <div>
-               <button onclick="location.href='{{ route('members.create')}}'" class="flex mt-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">新規登録</button>
+               <button onclick="location.href='{{ route('members.create')}}'" class="flex mt-4 ml-auto text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded">新規登録</button>
              </div>
           </div>
           @else                 
