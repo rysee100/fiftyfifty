@@ -46,3 +46,7 @@ Route::prefix('posts')
       Route::put('/{post}', [PostController::class, 'update'])->name('posts.update');
       Route::delete('/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     });
+    
+if (env('APP_ENV') === 'production') {
+      URL::forceScheme('https');
+  }

@@ -6,8 +6,8 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white overflow-hidden shadow-xl">
                <section class="text-gray-600 body-font">
                  
                   <div class="container px-5 py-2 mx-auto">

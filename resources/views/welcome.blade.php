@@ -52,17 +52,17 @@
                <div class="bg-white overflow-hidden shadow-xl">
                  <section class="text-gray-600 body-font">
                      <div class="container px-5 py-2 mx-auto">
-                         <div class="w-full mx-auto overflow-auto md:flex justify-between">
-                            <div class="flex justify-center md:pl-8 items-center">
+                         <div class="w-full mx-auto overflow-auto sm:flex justify-between">
+                            <div class="flex justify-center sm:pl-8 items-center">
                                <div class="inline-block">
-                                   <h1 class="headline mt-8 text-center md:text-left">
+                                   <h1 class="headline mt-8 text-center sm:text-left">
                                     精算額が一目で分かる。
                                   </h1>
-                                  <h2 class="second_headline mt-6 text-center md:text-left">
+                                  <h2 class="second_headline mt-6 text-center sm:text-left">
                                     ２人暮らしに特化した<br>
                                     家計折半サービス
                                   </h2>
-                                    <div class="hidden md:inline-block mx-auto my-8">
+                                    <div class="hidden sm:inline-block mx-auto my-8">
                                        <p class="pt-2 text-xl">アカウント登録後にご利用いただけます︎︎</p>
                                        <div class="flex justify-end my-4">
                                         <div class="text-green-600 text-2xl my-2 mr-2">▶︎▶︎</div>
@@ -73,11 +73,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="welcom_image mx-auto py-8 md:py-4">
+                            <div class="welcom_image mx-auto py-8 sm:py-4">
                                 <img src="{{ asset("images/image1.png") }}">
                             </div>
-                            <p class="pt-2 text-center text-base md:hidden">アカウント登録後にご利用いただけます︎︎</p>
-                            <div class="flex justify-center my-4 md:hidden">
+                            <p class="pt-2 text-center text-base sm:hidden">アカウント登録後にご利用いただけます︎︎</p>
+                            <div class="flex justify-center my-4 sm:hidden">
                                 <div class="text-green-600 text-xl my-2 mr-2">▶︎▶︎</div>
                                 <a href="{{ route('register') }}" class="text-xl text-white bg-orange-600 border-0 py-2 px-6 hover:bg-orange-500 rounded">
                                    利用登録
