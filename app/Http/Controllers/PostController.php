@@ -17,7 +17,7 @@ class PostController extends Controller
         
         if(!is_null($request->month))
         {
-           $date = Carbon::createFromFormat('Y年n月', $request->month);
+           $date = Carbon::createFromFormat('Y年m月 H:i', $request->month . " 00:00");
            
             $year = $date->format('Y');
             $month = $date->format('n');
@@ -94,10 +94,10 @@ class PostController extends Controller
       
       foreach($allPost as $onlyPost)
       {
-       $dateList = Carbon::createFromFormat('Y-n-j', $onlyPost->date);
+       $dateList = Carbon::createFromFormat('Y-m-d H:i', $onlyPost->date. " 00:00");
        
        $dateListYear = $dateList->format('Y');
-       $dateListMonth = $dateList->format('n');
+       $dateListMonth = $dateList->format('m');
        
        $monthList = $dateListYear . "年" .  $dateListMonth . "月";
        
