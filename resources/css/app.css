@@ -800,3 +800,30 @@ span.flatpickr-weekday {
             transform: translate3d(0, 0, 0);
   }
 }
+
+
+.headline {
+  font-size: 50px;
+}
+
+.second_headline {
+  font-size: 30px;
+}
+
+.welcom_image {
+  width: 400px;
+}
+
+@media (max-width: 768px) {
+  .headline {
+  font-size: 30px;
+}
+
+.second_headline {
+  font-size: 20px;
+}
+
+.welcom_image {
+  width: 200px;
+}
+}

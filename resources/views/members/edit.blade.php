@@ -21,7 +21,7 @@
             @csrf
             @method('put')
 
-            <div class="mt-4 mb-4">
+            <div class="mt-4 mx-4 mb-4">
                 <x-jet-label for="member_name" value="変更後の名前" />
                 <x-jet-input id="member_name" class="block mt-1 w-full" type="text" name="member_name" value="{{ $member->member_name }}" required autofocus />
             </div>

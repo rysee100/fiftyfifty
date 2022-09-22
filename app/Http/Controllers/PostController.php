@@ -14,7 +14,6 @@ class PostController extends Controller
     
     public function index(Request $request)
     {
-        // dd($request->month);
         
         if(!is_null($request->month))
         {
@@ -31,45 +30,45 @@ class PostController extends Controller
                    
            $selectMonth = $year . "年" . $month . "月分";
            
-          $arrayMonthPrices = Post::selectRaw('SUM(price) as month_price')
+           
+          $arrayMonthPrice = Post::selectRaw('SUM(price) as month_price')
                             ->where('user_id', '=', Auth::id())
                             ->whereYear('date', $year)
                             ->whereMonth('date', $month)
-                            ->get();
+                            ->get()
+                            ->toArray();
+                            
+                            
+          $arrayMonthPrice = array_shift($arrayMonthPrice);
                 
-        foreach($arrayMonthPrices as $arrayMonthPrice)
-        {
-            $monthPrice = (int)$arrayMonthPrice->month_price;
+        
+          $monthPrice = (int)$arrayMonthPrice['month_price'];
             
-        }
         
         $firstMember = Member::where('user_id', '=', Auth::id())->first();
-        $arraySecondMembers = Member::where('user_id', '=', Auth::id())
-                       ->where('id', '!=', $firstMember->id)->get();
+        
+        $arraySecondMember = Member::where('user_id', '=', Auth::id())
+                       ->where('id', '!=', $firstMember->id)
+                       ->get()
+                       ->toArray();
                        
-        foreach($arraySecondMembers as $arraySecondMember)
-        {
-            $secondMember = $arraySecondMember;
-            
-        }
+        $secondMember = array_shift($arraySecondMember);
         
         
-        $arrayMemberMonthPrices = Post::selectRaw('SUM(price) as month_price')
+        $arrayMemberMonthPrice = Post::selectRaw('SUM(price) as month_price')
                             ->where('user_id', '=', Auth::id())
                             ->whereYear('date', $year)
                             ->whereMonth('date', $month)
                             ->where('member_id', '=',  $firstMember->id)
-                            ->get();
+                            ->get()
+                            ->toArray();
                             
-        foreach($arrayMemberMonthPrices as $arrayMemberMonthPrice)
-        {
-            $memberMonthPrice = (int)$arrayMemberMonthPrice->month_price;
-            
-        }
+        $arrayMemberMonthPrice = array_shift($arrayMemberMonthPrice);
+                            
+        $memberMonthPrice = (int)$arrayMemberMonthPrice['month_price'];
         
         $memberMonthTotal = ($monthPrice / 2) -  $memberMonthPrice;
-
-            
+  
         } 
         
         else
@@ -89,8 +88,9 @@ class PostController extends Controller
       $allPost = Post::where('user_id', '=', Auth::id())
                  ->orderBy('date', 'desc')
                  ->get();
-      
-      $months = [];
+                 
+      if($allPost->isNotEmpty())
+      {
       
       foreach($allPost as $onlyPost)
       {
@@ -101,13 +101,19 @@ class PostController extends Controller
        
        $monthList = $dateListYear . "年" .  $dateListMonth . "月";
        
-       array_push($months, $monthList);
-          
+        $months[] = $monthList;
       }
-      
+     
       $months = array_unique($months);
         
        $members = Member::where('user_id', '=', Auth::id())->get();
+       
+      } 
+      
+      else {
+          $months = null;
+          $members = null;
+      }
        
         
         return view('dashboard', 

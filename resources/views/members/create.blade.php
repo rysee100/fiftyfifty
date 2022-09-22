@@ -19,11 +19,11 @@
         <form method="POST" action="{{ route('members.store') }}">
             @csrf
 
-            <div class="mt-4 mb-4">
+            <div class="mt-4 mx-4 mb-4">
                 <x-jet-label for="first_member_name" value="メンバー1の名前" />
                 <x-jet-input id="first_member_name" class="block mt-1 w-full" type="text" name="first_member_name" :value="old('first_member_name')" required autofocus />
             </div>
-            <div class="mt-4 mb-4">
+            <div class="mt-4 mx-4 mb-4">
                 <x-jet-label for="second_member_name" value="メンバー2の名前" />
                 <x-jet-input id="second_member_name" class="block mt-1 w-full" type="text" name="second_member_name" :value="old('second_member_name')" required autofocus />
             </div>

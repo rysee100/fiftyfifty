@@ -40,8 +40,8 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'first_member_name' => ['required', 'max:30'],
-        'second_member_name' => ['required', 'max:30']
+        'first_member_name' => ['required', 'max:10'],
+        'second_member_name' => ['required', 'max:10']
     ]);
     
     if($request->first_member_name === $request->second_member_name){
@@ -108,7 +108,7 @@ class MemberController extends Controller
     public function update(Request $request, Member $member)
     {
        $validated = $request->validate([
-        'member_name' => ['required', 'max:30'],
+        'member_name' => ['required', 'max:10'],
        ]);
        
       $allMember = Member::where('user_id', '=', Auth::id())
