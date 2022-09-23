@@ -66,7 +66,7 @@
                          <div class="text-xl mt-2">¥ {{ number_format($post->price) }}</div>
                          <div class="text-base mt-4">{{ $post->comment }}</div>
                          <div class="flex justify-end">
-                          <div class="text-sm text-right mt-2">{{ $post->date }}</div>
+                          <div class="text-sm text-right mt-2">{{ $post->postDate }}</div>
                            <form method="get" action="{{ route('posts.edit', ['post' => $post->id ]) }}">
                             <div class="text-sm text-right mt-2">
                              <button class="ml-5 text-blue-500">編集</button>

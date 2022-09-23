@@ -94,12 +94,8 @@ class PostController extends Controller
       
       foreach($allPost as $onlyPost)
       {
-       $dateList = Carbon::createFromFormat('Y-n-j G:i:s.u', $onlyPost->date . " 00:00:00.00");
        
-       $dateListYear = $dateList->format('Y');
-       $dateListMonth = $dateList->format('n');
-       
-       $monthList = $dateListYear . "年" .  $dateListMonth . "月";
+       $monthList = $onlyPost->monthList;
        
         $months[] = $monthList;
       }
