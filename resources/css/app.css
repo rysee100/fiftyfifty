@@ -810,11 +810,19 @@ span.flatpickr-weekday {
   font-size: 30px;
 }
 
-.welcom_image {
-  width: 400px;
+.welcome_image_p {
+  width:500px;
 }
 
-@media (max-width: 768px) {
+.welcome_image_s {
+  width: 200px;
+}
+
+.welcome_image_d {
+  width: 300px;
+}
+
+@media (max-width: 1024px) {
   .headline {
   font-size: 30px;
 }
@@ -823,7 +831,8 @@ span.flatpickr-weekday {
   font-size: 20px;
 }
 
-.welcom_image {
+.welcome_image {
   width: 200px;
 }
+
 }

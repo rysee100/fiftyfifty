@@ -902,6 +902,12 @@ video {
   right: 0px;
 }.top-0 {
   top: 0px;
+}.left-80 {
+  left: 20rem;
+}.top-20 {
+  top: 5rem;
+}.-top-4 {
+  top: -1rem;
 }.z-0 {
   z-index: 0;
 }.z-50 {
@@ -986,6 +992,8 @@ video {
   margin-right: 1.5rem;
 }.ml-5 {
   margin-left: 1.25rem;
+}.mb-8 {
+  margin-bottom: 2rem;
 }.block {
   display: block;
 }.inline-block {
@@ -1264,6 +1272,9 @@ video {
 }.bg-orange-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }.bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }.bg-cover {
@@ -1279,6 +1290,8 @@ video {
   padding: 0.5rem;
 }.p-6 {
   padding: 1.5rem;
+}.p-8 {
+  padding: 2rem;
 }.px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1450,6 +1463,9 @@ video {
 }.text-blue-500 {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}.text-orange-600 {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity));
 }.text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -2137,9 +2153,13 @@ video {
   font-size: 50px;
 }.second_headline {
   font-size: 30px;
-}.welcom_image {
-  width: 400px;
-}@media (max-width: 768px) {
+}.welcome_image_p {
+  width:500px;
+}.welcome_image_s {
+  width: 200px;
+}.welcome_image_d {
+  width: 300px;
+}@media (max-width: 1024px) {
   .headline {
   font-size: 30px;
 }
@@ -2148,9 +2168,10 @@ video {
   font-size: 20px;
 }
 
-.welcom_image {
+.welcome_image {
   width: 200px;
 }
+
 }.hover\:border-orange-200:hover {
   --tw-border-opacity: 1;
   border-color: rgb(254 215 170 / var(--tw-border-opacity));
@@ -2407,9 +2428,6 @@ video {
   }.sm\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
-  }.sm\:py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
   }.sm\:pt-0 {
     padding-top: 0px;
   }.sm\:pb-4 {
@@ -2421,6 +2439,9 @@ video {
   }.sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }.sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }@media (min-width: 768px) {.md\:col-span-2 {
     grid-column: span 2 / span 2;
@@ -2447,8 +2468,12 @@ video {
   }
 }@media (min-width: 1024px) {.lg\:col-span-4 {
     grid-column: span 4 / span 4;
+  }.lg\:inline-block {
+    display: inline-block;
   }.lg\:flex {
     display: flex;
+  }.lg\:hidden {
+    display: none;
   }.lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

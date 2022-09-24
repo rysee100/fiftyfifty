@@ -162,8 +162,7 @@ return [
         'post_name' => '支出名',
         'price' => '支出額',
         'comment' => '備考',
-        'date' => '支出日'
-        
+        'date' => '支出日',
         ],
 
 ];

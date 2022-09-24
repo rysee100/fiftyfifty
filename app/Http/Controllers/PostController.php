@@ -30,7 +30,6 @@ class PostController extends Controller
                    
            $selectMonth = $year . "年" . $month . "月分";
            
-           
           $arrayMonthPrice = Post::selectRaw('SUM(price) as month_price')
                             ->where('user_id', '=', Auth::id())
                             ->whereYear('date', $year)
@@ -92,13 +91,13 @@ class PostController extends Controller
       if($allPost->isNotEmpty())
       {
       
-      foreach($allPost as $onlyPost)
-      {
-       
-       $monthList = $onlyPost->monthList;
-       
-        $months[] = $monthList;
-      }
+          foreach($allPost as $onlyPost)
+          {
+           
+           $monthList = $onlyPost->monthList;
+           
+            $months[] = $monthList;
+          }
      
       $months = array_unique($months);
         

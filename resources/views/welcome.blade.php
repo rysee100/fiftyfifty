@@ -27,11 +27,9 @@
     <body class="antialiased">
         <div class="min-h-screen bg-gray-100">
         <header class="flex justify-between bg-white shadow">
-            <div class="py-6 px-8">
-              <div class="w-16">
+              <div class="w-16 m-4">
                 <x-jet-application-mark class="h-9 w-auto" />
               </div>
-             </div>
         <div class="py-6 px-8 text-right">
            @if (Route::has('login'))
                @auth
@@ -51,7 +49,7 @@
              <div class="max-w-7xl mx-auto">
                <div class="bg-white overflow-hidden shadow-xl">
                  <section class="text-gray-600 body-font">
-                     <div class="container px-5 py-2 mx-auto">
+                     <div class="container px-5 py-2 mx-auto mt-10">
                          <div class="w-full mx-auto overflow-auto sm:flex justify-between">
                             <div class="flex justify-center sm:pl-8 items-center">
                                <div class="inline-block">
@@ -73,9 +71,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="welcom_image mx-auto py-8 sm:py-4">
+                            <div class="welcome_image mx-auto py-8 lg:hidden">
                                 <img src="{{ asset("images/image1.png") }}">
                             </div>
+                            <div class="hidden lg:inline-block mx-auto py-4 relative">
+                                  <img class="welcome_image_p" src="{{ asset("images/image3.png") }}">
+                                  <div class="absolute left-80 top-20">
+                                   <img class="welcome_image_s" src="{{ asset("images/image2.png") }}">
+                                </div>
+                             </div>   
                             <p class="pt-2 text-center text-base sm:hidden">アカウント登録後にご利用いただけます︎︎</p>
                             <div class="flex justify-center my-4 sm:hidden">
                                 <div class="text-green-600 text-xl my-2 mr-2">▶︎▶︎</div>
@@ -85,11 +89,55 @@
                                   <div class="text-green-600 text-xl my-2 ml-2">︎◀︎◀︎</div>
                             </div>
                          </div>
+                         <div class="w-full mx-auto overflow-auto mt-10 mb-8">
+                             <div class="mt-10 text-2xl flex justify-center">使い方</div>
+                             <div class="lg:flex justify-between px-8">
+                                 <div class="border rounded relative mx-4 mt-12">
+                                     <div class="absolute m-auto left-0 right-0 -top-4 bg-green-500 w-8 h-8 pt-1 text-white text-center rounded-full">1</div>
+                                       <div class="m-4">
+                                         <p class="mt-8 mb-4 text-base text-center">折半するメンバーを登録</p>
+                                         <img class="welcome_image_d border mx-auto" src="{{ asset("images/image4.png") }}"> 
+                                         <p class="mt-8 mb-4 text-sm text-center">
+                                           “メンバー一覧 >> 新規登録”より<br>
+                                           2名登録をしてください。
+                                         </p>
+                                       </div>
+                                 </div>
+                                 <div class="border rounded relative mx-4 mt-12">
+                                     <div class="absolute m-auto left-0 right-0 -top-4 bg-green-500 w-8 h-8 pt-1 text-white text-center rounded-full">2</div>
+                                       <div class="m-4">
+                                         <p class="mt-8 mb-4 text-base text-center">支出内容を投稿</p>
+                                         <img class="welcome_image_d border mx-auto" src="{{ asset("images/image5.png") }}"> 
+                                         <p class="mt-8 mb-4 text-sm text-center">
+                                           ホーム画面 “投稿する”ボタンより<br>
+                                           投稿してください。
+                                         </p>
+                                       </div>
+                                 </div>
+                                 <div class="border rounded relative mx-4 mt-12">
+                                     <div class="absolute m-auto left-0 right-0 -top-4 bg-green-500 w-8 h-8 pt-1 text-white text-center rounded-full">3</div>
+                                       <div class="m-4">
+                                         <p class="mt-8 mb-4 text-base text-center">精算額を確認</p>
+                                         <img class="welcome_image_d border mx-auto" src="{{ asset("images/image6.png") }}"> 
+                                         <p class="mt-8 mb-4 text-sm text-center">
+                                           “精算額を確認する”ボタンを押すと<br>
+                                           精算額が表示されます！
+                                         </p>
+                                       </div>
+                                 </div>
+                             </div>
+                         </div>
                     </div>
                  </section>
                </div>
              </div>
            </div>
+           <footer class="bg-white shadow text-center p-8">
+               <div class="w-16 mx-auto">
+                <x-jet-application-mark class="h-9 w-auto" />
+              </div>
+               <p class="text-gray-900"><small>&copy; 2022 fifty-fifty</small></p>
+           </footer>
         </div>
     </body>
 </html>
