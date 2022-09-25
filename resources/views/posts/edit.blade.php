@@ -20,7 +20,7 @@
             @csrf
             @method('put')
                 
-                    <div class="mt-4">
+                    <div class="mx-4">
                      <x-jet-label for="member_name" value="支出者" />
                         <select name="member_name">
                             @foreach($members as $member)

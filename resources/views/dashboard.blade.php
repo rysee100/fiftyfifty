@@ -30,7 +30,7 @@
                    {{number_format($monthPrice)}}
                     円
                     </div>
-                    <div class="text-lg text-center font-bold mt-2 mx-4 grid grid-column lg:flex flex-center sm:text-xl">
+                    <div class="text-lg text-center font-bold mt-2 mx-2 grid grid-column lg:flex flex-center sm:text-xl">
                        @if($memberMonthTotal < 0)
                         {{$secondMember['member_name']}}さんは{{$firstMember->member_name}}さんに
                         <span class="text-red-600 text-center">{{number_format(abs($memberMonthTotal))}}円</span>
@@ -40,7 +40,6 @@
                         <span class="text-red-600 text-center">{{number_format(abs($memberMonthTotal))}}円</span>
                         支払ってください。
                         @endif
-                        
                     </div>
                  </div>
                 @endif
