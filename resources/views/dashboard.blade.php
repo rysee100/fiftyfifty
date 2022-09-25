@@ -40,7 +40,6 @@
                         <span class="text-red-600 text-center">{{number_format(abs($memberMonthTotal))}}円</span>
                         支払ってください。
                         @endif
-                        
                     </div>
                  </div>
                 @endif
