@@ -19,7 +19,7 @@
                     </select>
                     <button class="ml-2 text-white bg-orange-500 border-0 py-2 px-6 hover:bg-orange-400 rounded">
                     精算額を確認する
-                   </button>
+                    </button>
                 </div>
                 @endif
                  @if($monthPrice)
@@ -29,8 +29,8 @@
                     総支出額
                    {{number_format($monthPrice)}}
                     円
-                     </div>
-                     <div class="text-lg text-center font-bold mt-2 mx-4 grid grid-column lg:flex flex-center sm:text-xl">
+                    </div>
+                    <div class="text-lg text-center font-bold mt-2 mx-4 grid grid-column lg:flex flex-center sm:text-xl">
                        @if($memberMonthTotal < 0)
                         {{$secondMember['member_name']}}さんは{{$firstMember->member_name}}さんに
                         <span class="text-red-600 text-center">{{number_format(abs($memberMonthTotal))}}円</span>
@@ -41,8 +41,8 @@
                         支払ってください。
                         @endif
                         
-                      </div>
-                  </div>
+                    </div>
+                 </div>
                 @endif
                 </form>
                  <div class="md:mt-4 mt-12 mr-6">
@@ -66,11 +66,11 @@
                          <div class="text-xl mt-2">¥ {{ number_format($post->price) }}</div>
                          <div class="text-base mt-4">{{ $post->comment }}</div>
                          <div class="flex justify-end">
-                          <div class="text-sm text-right mt-2">{{ $post->postDate }}</div>
+                           <div class="text-sm text-right mt-2">{{ $post->postDate }}</div>
                            <form method="get" action="{{ route('posts.edit', ['post' => $post->id ]) }}">
-                            <div class="text-sm text-right mt-2">
-                             <button class="ml-5 text-blue-500">編集</button>
-                            </div>
+                             <div class="text-sm text-right mt-2">
+                               <button class="ml-5 text-blue-500">編集</button>
+                             </div>
                            </form>
                            <form class="delete" method="post" onsubmit="return confirm('本当に削除しますか？')" action="{{ route('posts.destroy', ['post' => $post->id ]) }}">
                               @csrf

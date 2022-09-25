@@ -1,12 +1,12 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-12 sm:h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="w-16 shrink-0 flex items-center">
+                <div class="flex items-center w-12 pt-1 pl-2 sm:w-16">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark />
                     </a>
                 </div>
 

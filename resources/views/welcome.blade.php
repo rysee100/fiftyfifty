@@ -26,23 +26,23 @@
     </head>
     <body class="antialiased">
         <div class="min-h-screen bg-gray-100">
-        <header class="flex justify-between bg-white shadow">
-              <div class="w-16 m-4">
-                <x-jet-application-mark class="h-9 w-auto" />
-              </div>
-        <div class="py-6 px-8 text-right">
-           @if (Route::has('login'))
-               @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-green-600 hover:underline">ホーム画面へ</a>
-            @else
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="text-sm text-white bg-orange-600 border-0 py-2 px-4 hover:bg-orange-500 rounded">利用登録</a>
+        <header class="h-16 p-2 flex justify-between bg-white shadow sm:h-full sticky top-0 z-10">
+            <div class="w-12 pl-2 pt-1 sm:w-16">
+              <x-jet-application-mark />
+            </div>
+            <div class="text-right py-2 pr-2">
+               @if (Route::has('login'))
+                   @auth
+                    <a href="{{ url('/dashboard') }}" class="text-xs text-green-600 hover:underline sm:text-sm">ホーム画面へ</a>
+                @else
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="text-xs text-white bg-orange-600 border-0 py-2 px-4 hover:bg-orange-500 rounded sm:text-sm">利用登録</a>
+                    @endif
+                    <a href="{{ route('login') }}" class="ml-4 py-2 text-xs text-green-600 hover:underline sm:text-sm">ログイン</a>
+                   @endauth
                 @endif
-                <a href="{{ route('login') }}" class="ml-4 text-sm text-green-600 hover:underline">ログイン</a>
-               @endauth
-            @endif
-        </div>
-     </header>
+            </div>
+        </header>
             
 
           <div class="py-12">
@@ -51,19 +51,19 @@
                  <section class="text-gray-600 body-font">
                      <div class="container px-5 py-2 mx-auto mt-10">
                          <div class="w-full mx-auto overflow-auto sm:flex justify-between">
-                            <div class="flex justify-center sm:pl-8 items-center">
+                            <div class="flex justify-center my-4 sm:my-12 sm:pl-8 items-center">
                                <div class="inline-block">
-                                   <h1 class="headline mt-8 text-center sm:text-left">
+                                   <h1 class="headline text-center sm:text-left">
                                     精算額が一目で分かる。
                                   </h1>
-                                  <h2 class="second_headline mt-6 text-center sm:text-left">
+                                  <h2 class="second_headline mt-4 sm:mt-6 text-center sm:text-left">
                                     ２人暮らしに特化した<br>
                                     家計折半サービス
                                   </h2>
                                     <div class="hidden sm:inline-block mx-auto my-8">
-                                       <p class="pt-2 text-xl">アカウント登録後にご利用いただけます︎︎</p>
+                                       <p class="mt-2 text-xl">アカウント登録後にご利用いただけます︎︎</p>
                                        <div class="flex justify-end my-4">
-                                        <div class="text-green-600 text-2xl my-2 mr-2">▶︎▶︎</div>
+                                          <div class="text-green-600 text-2xl my-2 mr-2">▶︎▶︎</div>
                                           <a href="{{ route('register') }}" class="text-3xl text-white bg-orange-600 border-0 py-2 px-6 hover:bg-orange-500 rounded">
                                            利用登録
                                           </a>
@@ -71,25 +71,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="welcome_image mx-auto py-8 lg:hidden">
+                            <div class="welcome_image mx-auto my-4 sm:my-12 lg:hidden">
                                 <img src="{{ asset("images/image1.png") }}">
                             </div>
                             <div class="hidden lg:inline-block mx-auto py-4 relative">
                                   <img class="welcome_image_p" src="{{ asset("images/image3.png") }}">
                                   <div class="absolute left-80 top-20">
-                                   <img class="welcome_image_s" src="{{ asset("images/image2.png") }}">
-                                </div>
-                             </div>   
-                            <p class="pt-2 text-center text-base sm:hidden">アカウント登録後にご利用いただけます︎︎</p>
+                                    <img class="welcome_image_s" src="{{ asset("images/image2.png") }}">
+                                  </div>
+                            </div>   
+                            <p class="mt-2 text-center text-base sm:hidden">アカウント登録後にご利用いただけます︎︎</p>
                             <div class="flex justify-center my-4 sm:hidden">
                                 <div class="text-green-600 text-xl my-2 mr-2">▶︎▶︎</div>
                                 <a href="{{ route('register') }}" class="text-xl text-white bg-orange-600 border-0 py-2 px-6 hover:bg-orange-500 rounded">
                                    利用登録
                                 </a>
-                                  <div class="text-green-600 text-xl my-2 ml-2">︎◀︎◀︎</div>
+                                <div class="text-green-600 text-xl my-2 ml-2">︎◀︎◀︎</div>
                             </div>
                          </div>
-                         <div class="w-full mx-auto overflow-auto mt-10 mb-8">
+                         <div class="w-full mx-auto overflow-auto mt-8 mb-6 sm:mt-10 sm:mb-8">
                              <div class="mt-10 text-2xl flex justify-center">使い方</div>
                              <div class="lg:flex justify-between px-8">
                                  <div class="border rounded relative mx-4 mt-12">
@@ -121,7 +121,7 @@
                                          <img class="welcome_image_d border mx-auto" src="{{ asset("images/image6.png") }}"> 
                                          <p class="mt-8 mb-4 text-sm text-center">
                                            “精算額を確認する”ボタンを押すと<br>
-                                           精算額が表示されます！
+                                           1ヶ月分の精算額が表示されます！
                                          </p>
                                        </div>
                                  </div>
@@ -132,8 +132,8 @@
                </div>
              </div>
            </div>
-           <footer class="bg-white shadow text-center p-8">
-               <div class="w-16 mx-auto">
+           <footer class="bg-white shadow text-center p-2 sm:p-8">
+              <div class="w-12 mx-auto sm:w-16">
                 <x-jet-application-mark class="h-9 w-auto" />
               </div>
                <p class="text-gray-900"><small>&copy; 2022 fifty-fifty</small></p>

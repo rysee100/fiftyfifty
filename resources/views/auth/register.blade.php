@@ -20,7 +20,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" value="パスワード" />
+                <x-jet-label for="password" value="パスワード ※8文字以上" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
